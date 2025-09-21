@@ -11,21 +11,6 @@ export const routes: Routes = [
   },
   {
     path:"auth",
-    component:AuthenticationComponent,
-    children:[
-      {
-        path:'',
-        pathMatch:'full',
-        redirectTo:'login'
-      },
-      {
-        path:'login',
-        component:LoginComponent
-      },
-      {
-        path:'registration',
-        component:RegistrationComponent
-      }
-    ]
+    loadChildren:()=>import('../app/components/authentication/authentication.module').then(module=>module.AuthModule),
   }
 ];
