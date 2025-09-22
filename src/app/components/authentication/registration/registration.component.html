@@ -1,11 +1,13 @@
-<div class="mt-5 ms-5">
+<div class="mt-5 ms-5" *ngIf="registrationForm">
+  <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
   Registration<br><br>
-   <input type="text" placeholder="usename"><br><br>
-   <input type="text" placeholder="email"><br><br>
-   <input type="text" placeholder="password"><br><br>
-   select role &nbsp;&nbsp;<input type="radio" name="student" id="student">student &nbsp;&nbsp;
-   <input type="radio" name="Instructor" id="Instructor">Instructor<br>
+   <input type="text" placeholder="usename" formControlName="username"><br><br>
+   <input type="text" placeholder="email" formControlName="email"><br><br>
+   <input type="text" placeholder="password" formControlName="password"><br><br>
+   select role &nbsp;&nbsp;<input type="radio" name="role" id="student" formControlName="role" value="student">Student &nbsp;&nbsp;
+   <input type="radio" name="role" id="instructor" formControlName="role" value="instructor">Instructor<br>
    already user? <a routerLink="/auth/login">login</a><br><br>
-   <button>submit</button>&nbsp;
+   <button type="submit">submit</button>&nbsp;
    <button>clear</button>
+  </form>
 </div>
