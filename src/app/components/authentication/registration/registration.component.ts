@@ -7,6 +7,7 @@ import { RegistrationResponseModel } from '../../../model/registrationResponse.m
 import { AngularModule, APP_SCHEMAS } from '../../../modules/angular/angular.module';
 import { strongPasswordValidator } from '../../../validators/password.validators';
 import {currentDateTime} from '../../../utility/utility'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   standalone: true,
@@ -18,8 +19,7 @@ import {currentDateTime} from '../../../utility/utility'
 })
 export class RegistrationComponent implements OnInit {
   public registrationForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,private apiService:ApiService){}
+  constructor(private formBuilder: FormBuilder,private apiService:ApiService,private router: Router){}
 
   ngOnInit(): void {
     this.formInitialization();
@@ -40,6 +40,7 @@ export class RegistrationComponent implements OnInit {
     registration.updated_at=currentDateTime();
     this.apiService.apiRegistration(registration).subscribe((response:RegistrationResponseModel)=>{
       this.clearForm();
+      this.router.navigate(['/auth/login']);
     })
   }
 

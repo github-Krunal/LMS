@@ -1,7 +1,20 @@
 <div class="mt-5 ms-5">
     login<br><br>
-     <input type="text" placeholder="usename or email"><br><br>
-     <input type="text" placeholder="password"><br><br>
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+     <input type="text" placeholder="usename or email" formControlName="email">
+     <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+      <small *ngIf="loginForm.get('email')?.errors?.['required']" style="color:red">
+        email is required
+      </small>
+     </div><br><br>
+     <input type="text" placeholder="password" formControlName="password">
+     <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']" style="color:red">
+        password is required
+      </small>
+     </div>
+     <br><br>
      new user? <a routerLink="/auth/registration">register</a><br><br>
-     <button>submit</button>
+     <button type="submit">submit</button>
+     </form>
 </div>

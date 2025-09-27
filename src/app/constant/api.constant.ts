@@ -3,4 +3,5 @@ const API_PREFIX = '/api/';
 const API_URL=API_HTTP_URL+API_PREFIX
 export const API_ENDPOINTS = {
   REGISTER: API_URL+'registration',
+  LOGIN: API_URL+'login',
 } as const;
