@@ -1,4 +1,4 @@
-<div class="mt-5 ms-5">
+<div class="mt-5 ms-5" *ngIf="loginForm">
     login<br><br>
   <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
      <input type="text" placeholder="usename or email" formControlName="email">

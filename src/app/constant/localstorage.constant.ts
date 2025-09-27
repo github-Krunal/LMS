@@ -1,3 +1,4 @@
 export const LOCALSTORAGE_CONSTANT = {
-  USER:'user'
+  USER:'user',
+  LAST_VISITED_URL:'lastVisitedUrl',
 } as const;

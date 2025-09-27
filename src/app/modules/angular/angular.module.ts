@@ -4,6 +4,7 @@ import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { LocalStorageService } from '../../utility/localstorage.service';
 
 // import {MatSelectModule} from '@angular/material/select';
 // import {MatInputModule} from '@angular/material/input';
@@ -63,6 +64,9 @@ const ANGULAR_MATERIAL_MODULE=[
   exports:[
     ANGULAR_DEFAULT_MODULE,
     ANGULAR_MATERIAL_MODULE
+  ],
+  providers:[
+    LocalStorageService
   ]
 })
 export class AngularModule { }
