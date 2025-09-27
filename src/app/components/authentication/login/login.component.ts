@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { LOCALSTORAGE_CONSTANT } from '../../../constant/localstorage.constant';
 import { LoginModel } from '../../../model/login.interface';
 import { LoginResponseModel } from '../../../model/loginResponse.interface';
 import { AngularModule, APP_SCHEMAS } from '../../../modules/angular/angular.module';
 import { ApiService } from '../../../services/api.service';
+import { setLocalStorage } from '../../../utility/utility';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +37,7 @@ export class LoginComponent {
   protected submitForm(){
     const login:LoginModel=this.loginForm?.value;
     this.apiService.apiLogin(login).subscribe((response:LoginResponseModel)=>{
-
+      setLocalStorage(LOCALSTORAGE_CONSTANT.USER,response.user);
       this.clearForm();
     })
   }
