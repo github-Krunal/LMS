@@ -1,3 +1,4 @@
+import { InstructorComponent } from './components/instructor/instructor.component';
 import { Routes } from '@angular/router';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { LoginComponent } from './components/authentication/login/login.component';
@@ -13,5 +14,9 @@ export const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'registration', component: RegistrationComponent }
     ]
+  },
+  {
+    path: 'instructor',
+    component: InstructorComponent,
   }
 ];
