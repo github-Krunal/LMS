@@ -5,5 +5,7 @@ export class RegistrationModel{
   username:string=""
   password:string=""
   role:UserRole='student'
+  created_at:string=""
+  updated_at:string=""
 }
 

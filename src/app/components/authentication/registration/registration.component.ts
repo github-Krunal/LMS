@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { RegistrationModel } from './../../../model/registration.model';
-import { RouterModule } from '@angular/router';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../services/api.service';
 import { RegistrationResponseModel } from '../../../model/registrationResponse.model';
 import { AngularModule, APP_SCHEMAS } from '../../../modules/angular/angular.module';
-
+import { strongPasswordValidator } from '../../../validators/password.validators';
+import {currentDateTime} from '../../../utility/utility'
 @Component({
   selector: 'app-registration',
   standalone: true,
@@ -27,18 +27,23 @@ export class RegistrationComponent implements OnInit {
 
   private formInitialization(): void {
     this.registrationForm = this.formBuilder.group({
-      username: [''],
-      email: ['', Validators.required],
-      password: [''],
-      role:['']
+      username: ['',Validators.required],
+      email: ['', [Validators.required,Validators.email]],
+      password: ['',[Validators.required,strongPasswordValidator()]],
+      role:['',Validators.required]
     });
   }
 
   protected submitForm(){
-    debugger
-    const registration:RegistrationModel=this.registrationForm?.value;
+    let registration:RegistrationModel=this.registrationForm?.value;
+    registration.created_at=currentDateTime();
+    registration.updated_at=currentDateTime();
     this.apiService.apiRegistration(registration).subscribe((response:RegistrationResponseModel)=>{
-
+      this.clearForm();
     })
+  }
+
+  private clearForm(){
+    this.registrationForm.reset();
   }
 }

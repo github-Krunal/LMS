@@ -1,5 +1,5 @@
 import { RegistrationModel } from './../model/registration.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_ENDPOINTS } from '../constant/api.constant';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   public apiRegistration(registration:RegistrationModel): Observable<RegistrationResponseModel>{
-    return this.http.post<RegistrationResponseModel>(API_ENDPOINTS.REGISTER,registration)
+    return this.http.post<RegistrationResponseModel>(API_ENDPOINTS.REGISTER,registration,
+      { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
   }
 }

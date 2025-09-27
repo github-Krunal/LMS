@@ -1,13 +1,42 @@
 <div class="mt-5 ms-5" *ngIf="registrationForm">
   <form [formGroup]="registrationForm" (ngSubmit)="submitForm()">
   Registration<br><br>
-   <input type="text" placeholder="usename" formControlName="username"><br><br>
-   <input type="text" placeholder="email" formControlName="email"><br><br>
+   <input type="text" placeholder="username" formControlName="username">
+   <div *ngIf="registrationForm.get('username')?.touched && registrationForm.get('username')?.invalid">
+    <small *ngIf="registrationForm.get('username')?.errors?.['required']" style="color:red">
+      username is required
+    </small>
+   </div>
+   <br><br>
+   <input type="text" placeholder="email" formControlName="email">
+   <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+    <small *ngIf="registrationForm.get('email')?.errors?.['required']" style="color:red">
+      email is required
+    </small>
+    <small *ngIf="registrationForm.get('email')?.errors?.['email']" style="color:red">
+      Invalid email format
+    </small>
+   </div>
+   <br><br>
    <input type="text" placeholder="password" formControlName="password"><br><br>
+   <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
+    <small *ngIf="registrationForm.get('password')?.errors?.['required']" style="color:red">
+      Password is required
+    </small>
+    <small *ngIf="registrationForm.get('password')?.errors?.['strongPassword']" style="color:red">
+      Password must have:
+      <ul>
+        <li [class.text-success]="registrationForm.get('password')?.errors?.['strongPassword']?.minLength">✔ Min 6 characters</li>
+        <li [class.text-success]="registrationForm.get('password')?.errors?.['strongPassword']?.hasUpperCase">✔ At least 1 uppercase</li>
+        <li [class.text-success]="registrationForm.get('password')?.errors?.['strongPassword']?.hasNumber">✔ At least 1 number</li>
+        <li [class.text-success]="registrationForm.get('password')?.errors?.['strongPassword']?.hasSpecialChar">✔ At least 1 special character</li>
+      </ul>
+    </small>
+  </div>
    select role &nbsp;&nbsp;<input type="radio" name="role" id="student" formControlName="role" value="student">Student &nbsp;&nbsp;
    <input type="radio" name="role" id="instructor" formControlName="role" value="instructor">Instructor<br>
    already user? <a routerLink="/auth/login">login</a><br><br>
-   <button type="submit">submit</button>&nbsp;
+   <button type="submit"[disabled]="registrationForm.invalid">submit</button>&nbsp;
    <button>clear</button>
   </form>
 </div>
