@@ -1,3 +1,4 @@
+import { FormBusinessObjectComponent } from './../form-business-object/form-business-object.component';
 import { FormRenderControlComponent } from './../form-render-control/form-render-control.component';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
@@ -17,7 +18,7 @@ import { GlobalModule } from '../../modules/angular/global.module';
 @Component({
   selector: 'framework-form-create',
   standalone: true,
-  imports: [AngularModule,GlobalModule,FormRenderControlComponent ],
+  imports: [AngularModule,GlobalModule,FormRenderControlComponent,FormBusinessObjectComponent ],
   templateUrl: './framework-form-create.component.html',
   styleUrl: './framework-form-create.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

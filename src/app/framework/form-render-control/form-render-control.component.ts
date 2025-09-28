@@ -1,3 +1,4 @@
+import { FormBusinessObjectComponent } from './../form-business-object/form-business-object.component';
 
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, NO_ERRORS_SCHEMA, Output } from '@angular/core';
@@ -10,7 +11,7 @@ import { GlobalModule } from '../../modules/angular/global.module';
 @Component({
   selector: 'form-render-control',
   standalone: true,
-  imports: [AngularModule,GlobalModule],
+  imports: [AngularModule,GlobalModule,FormBusinessObjectComponent],
   templateUrl: './form-render-control.component.html',
   styleUrl: './form-render-control.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA]

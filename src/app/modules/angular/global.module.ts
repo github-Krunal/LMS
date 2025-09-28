@@ -18,9 +18,7 @@ import { AttachmentComponent } from '../../framework/controls/attachment/attachm
 const COMMON_COMPONENT=[
   RightPanelComponent,
   FrameworkTableComponent,
-  FormBusinessObjectComponent,
-  LookupPropertiesComponent,
-  DropdownPropertiesComponent,
+
   SingleLineFieldComponent,
   MultiLineFieldComponent,
   LookUpComponent,
