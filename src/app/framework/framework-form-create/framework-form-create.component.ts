@@ -40,6 +40,10 @@ export class FrameworkFormCreateComponent {
     },
     {
       icon:"add",
+      Name:"Number Field"
+    },
+    {
+      icon:"add",
       Name:"Multi-line Field"
     },
     {
@@ -103,6 +107,8 @@ export class FrameworkFormCreateComponent {
     switch (name) {
       case 'Text Field':
         return FieldTypeEnum.SINGLE_LINE_FIELD;
+      case 'Number Field':
+        return FieldTypeEnum.NUMBER_FIELD;
       case 'Multi-line Field':
         return FieldTypeEnum.MULTI_LINE_FIELD;
       case 'Lookup Field':

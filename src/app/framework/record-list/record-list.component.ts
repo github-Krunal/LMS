@@ -10,11 +10,12 @@ import { FrameworkTableComponent } from '../framework-table/framework-table.comp
 import { ApiService } from '../../services/api.service';
 import { AngularModule } from '../../modules/angular/angular.module';
 import { UtilityService } from '../../utility/utility.service';
+import { GlobalModule } from '../../modules/angular/global.module';
 
 @Component({
   selector: 'record-list',
   standalone: true,
-  imports: [FrameworkFormComponent,FrameworkTableComponent,AngularModule],
+  imports: [FrameworkFormComponent,FrameworkTableComponent,AngularModule,GlobalModule],
   templateUrl: './record-list.component.html',
   styleUrl: './record-list.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA],

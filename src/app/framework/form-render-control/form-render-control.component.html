@@ -12,6 +12,17 @@
       </single-line-field>
     </div>
 
+     <!-- Number Field -->
+     <div *ngIf="field?.fieldType === fieldTypeEnum.NUMBER_FIELD"
+     [ngClass]="isFieldDefinationCreate ? 'card p-3 ps-4 pe-4 mb-3' : ''" cdkDrag
+     [cdkDragDisabled]="!isFieldDefinationCreate" (click)="selectedField(field)">
+     <div class="field-action-icon" *ngIf="isFieldDefinationCreate">
+       <mat-icon (click)="deleteField(index)">close</mat-icon>
+     </div>
+     <number-field [field]="field" [frameworkForm]="frameworkForm" [isViewRecord]="isViewRecord">
+     </number-field>
+   </div>
+
     <!-- Multi Line Field -->
     <div *ngIf="field?.fieldType === fieldTypeEnum.MULTI_LINE_FIELD"
       [ngClass]="isFieldDefinationCreate ? 'card p-3 ps-4 pe-4 mb-3' : ''" cdkDrag
