@@ -1,0 +1,16 @@
+<ng-container *ngIf="frameworkForm">
+  <div [formGroup]="frameworkForm" *ngIf="!isViewRecord">
+    <div class="mb-3">
+      <label [for]="field.formControlName" class="form-label">{{field.displayName}}</label>
+      <select [id]="field.formControlName" class="form-control"  [formControlName]="field.formControlName">
+        <option *ngFor="let option of dropdownOptions">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <ng-container *ngIf="isViewRecord">
+    <div class=" fw-bold">{{field.displayName}}</div>
+    <div>{{fieldValue}}</div>
+  </ng-container>
+</ng-container>

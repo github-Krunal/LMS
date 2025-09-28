@@ -1,0 +1,16 @@
+<ng-container *ngIf="frameworkForm">
+  <div [formGroup]="frameworkForm" *ngIf="!isViewRecord">
+    <div class="mb-3">
+      <label for="dateInput" class="form-label">{{field.displayName}}</label>
+
+      <div class="input-group">
+        <input matInput [matDatepicker]="dp" id="dateInput" class="form-control"
+          [formControlName]="field.formControlName" />
+        <button type="button" class="btn btn-outline-secondary" (click)="dp.open()">
+          <i class="bi bi-calendar-date"></i>
+        </button>
+      </div>
+      <mat-datepicker #dp></mat-datepicker>
+    </div>
+  </div>
+</ng-container>

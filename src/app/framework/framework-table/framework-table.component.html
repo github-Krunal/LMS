@@ -1,0 +1,14 @@
+ <table mat-table [dataSource]="dataSourceList" class="mat-elevation-z8 ">
+    <ng-container matColumnDef="RepositoryName">
+      <th mat-header-cell *matHeaderCellDef> Repository Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.RepositoryName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

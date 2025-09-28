@@ -1,0 +1,34 @@
+
+
+<ng-container *ngIf="frameworkForm">
+  <div [formGroup]="frameworkForm" *ngIf="!isViewRecord">
+    <div class="mb-3">
+      <label for="fileUpload" class="form-label">Upload Attachment</label>
+      <div>
+      <input
+        type="file"
+        id="fileUpload"
+        (change)="onFileSelected($event)"
+        #fileInput
+        />
+      </div>
+
+      <!-- Show uploaded file -->
+      <div *ngIf="selectedFile&&selectedFile.displayName" class="mt-2 d-flex align-items-center">
+        <span class="me-2">{{ selectedFile.displayName }}</span>
+        <button
+          type="button"
+          class="btn btn-sm btn-danger"
+          (click)="removeFile()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="isViewRecord">
+    <div class=" fw-bold">{{field.displayName}}</div>
+    <div>
+      <button type="button" class="btn btn-link" (click)="downloadFile()">{{selectedFile.displayName}}</button>
+    </div>
+  </ng-container>
+</ng-container>

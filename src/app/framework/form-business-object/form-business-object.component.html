@@ -1,0 +1,20 @@
+<ng-container *ngIf="field">
+
+<div class="mb-3">
+  <label for="fieldName" class="form-label">Display Name</label>
+  <input type="text" class="form-control" id="fieldName" [(ngModel)]="field.displayName">
+</div>
+
+<div class="mb-3">
+  <label for="internalName" class="form-label">Internal Name</label>
+  <input type="text" class="form-control" id="internalName" [(ngModel)]="field.formControlName">
+</div>
+
+<ng-container *ngIf="field.fieldType===fieldTypeEnum.LOOK_UP_FIELD">
+  <lookup-properties [field]="field"></lookup-properties>
+</ng-container>
+<ng-container *ngIf="field.fieldType===fieldTypeEnum.DROPDOWN_FIELD">
+  <dropdown-properties [field]="field"></dropdown-properties>
+</ng-container>
+
+</ng-container>

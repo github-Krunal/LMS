@@ -1,0 +1,42 @@
+<ng-container *ngIf="frameworkForm">
+  <!-- Editable -->
+  <div class="mb-3" [formGroup]="frameworkForm" *ngIf="!isViewRecord">
+    <label class="form-label">{{ field.displayName }}</label>
+
+    <!-- Chip grid -->
+    <mat-chip-grid #chipGrid aria-label="Chip selection" class="form-control p-2">
+      <mat-chip-row *ngFor="let value of selectedValues" (removed)="remove(value)">
+        {{ value }}
+        <button matChipRemove [attr.aria-label]="'remove ' + value">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+
+      <!-- Input -->
+      <input
+        type="text"
+        class="form-control border-0 shadow-none p-0"
+        placeholder="Type to search..."
+        #chipInput
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matAutocomplete]="auto"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-grid>
+
+    <!-- Autocomplete -->
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+      (optionSelected)="selected($event)">
+      <mat-option *ngFor="let option of (filteredOptions | async) ?? []" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+
+  <!-- View-only -->
+  <ng-container *ngIf="isViewRecord">
+    <div class="fw-bold">{{ field.displayName }}</div>
+    <div>{{ fieldValue }}</div>
+  </ng-container>
+</ng-container>

@@ -1,0 +1,11 @@
+<ng-container *ngIf="frameworkForm">
+  <div [formGroup]="frameworkForm" *ngIf="!isViewRecord">
+    <div class="mb-3">
+      <mat-checkbox class="example-margin" [formControlName]="field.formControlName">{{field.displayName}}</mat-checkbox>
+    </div>
+  </div>
+  <ng-container *ngIf="isViewRecord">
+    <div class=" fw-bold">{{field.displayName}}</div>
+    <div >{{fieldValue}}</div>
+  </ng-container>
+</ng-container>

@@ -20,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'instructor',
     component: InstructorComponent,
-  }
+  },
+  {
+    path:"repository",
+    loadChildren:()=>import('../app/framework/framework.module').then(framework=>framework.FrameworkModule)
+  },
 ];

@@ -1,0 +1,23 @@
+<label class="form-label">Lookup Repository Name</label>
+<select
+  class="form-select"
+  aria-label="Default select example"
+  [(ngModel)]="lookupRepositoryId"
+  name="lookupRepositoryId"
+  (change)="onRepositorySelect()">
+  <option *ngFor="let repository of repositoryList" [value]="repository._id">
+    {{ repository.repositoryName }}
+  </option>
+</select>
+
+<label class="form-label mt-3">Lookup Field1</label>
+<select
+  class="form-select"
+  aria-label="Default select example"
+  [(ngModel)]="lookupField1"
+  name="selectedLookupField"
+  (change)="onLookupfieldSelect($event)">
+  <option *ngFor="let lookup of lookupFieldList" [value]="lookup.formControlName">
+    {{ lookup.displayName }}
+  </option>
+</select>

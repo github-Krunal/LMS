@@ -1,0 +1,67 @@
+<div class="row mt-3">
+  <div class="col-md-12">
+    <div class="d-flex justify-content-end">
+    <button mat-flat-button class="me-2" type="submit" (click)="submitField()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </div>
+  </div>
+</div>
+<div class="row mt-3">
+
+  <!-- Left: Field List (Draggable Items) -->
+  <div class="col-md-2">
+    <div
+    cdkDropList
+    [cdkDropListData]="fieldList"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    #todoList="cdkDropList"
+    [cdkDropListConnectedTo]="[doneList]"
+    >
+
+      <div
+        *ngFor="let field of fieldList"
+        cdkDrag
+        class="example-box">
+        <mat-card appearance="outlined" class="w-100 mb-2">
+          <div class="field-wrapper d-flex align-items-center">
+            <mat-icon class="field-icon">{{ field.icon }}</mat-icon>
+            <span class="field-label ms-2">{{ field.Name }}</span>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: Dropped Form Builder -->
+  <div class="col-md-8">
+    <div
+      class="example-container"
+      cdkDropList
+      [cdkDropListData]="fieldDefinationList"
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListConnectedTo]="[todoList]"
+      #doneList="cdkDropList"
+      >
+
+      <ng-container *ngIf="(fieldDefinationList?.length ?? 0) > 0; else noFields">
+        <form-render-control
+          [frameworkForm]="frameworkForm"
+          [fieldDefination]="fieldDefinationList" [isFieldDefinationCreate]="true" (fieldEmitter)="fieldEmitter($event)">
+        </form-render-control>
+      </ng-container>
+
+      <ng-template #noFields>
+        <div class="text-muted p-3 text-center">No fields added yet.</div>
+      </ng-template>
+
+    </div>
+  </div>
+
+  <!-- Right: Placeholder -->
+  <div class="col-md-2">
+      <form-business-object [field]="selectedFieldDefination"></form-business-object>
+  </div>
+
+</div>

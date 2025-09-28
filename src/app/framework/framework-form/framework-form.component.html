@@ -1,0 +1,13 @@
+<div class="p-2" *ngIf="frameworkForm">
+<form [formGroup]="frameworkForm">
+    <div class="d-flex justify-content-end">
+    <button mat-flat-button class="me-2" color="warn" (click)="closeFrameworkForm()">
+      <mat-icon>close</mat-icon> Close
+    </button>
+    <button mat-flat-button  type="submit" *ngIf="!isViewRecord" (click)="onSubmitFrameworkForm()">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </div>
+  <form-render-control [frameworkForm]="frameworkForm" [fieldDefination]="fieldDefination" [isViewRecord]="isViewRecord"></form-render-control>
+  </form>
+  </div>
