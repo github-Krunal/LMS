@@ -1,0 +1,27 @@
+<!-- Sidebar -->
+<aside class="sidebar">
+  <h2 class="sidebar__title">Krunal's Organization</h2>
+
+  <nav class="sidebar__menu">
+    <nav class="sidebar__menu">
+        <ng-container *ngFor="let menu of inxMenu">
+        <a
+           [routerLink]="menu.Route"
+           routerLinkActive="sidebar__item--active"
+           class="sidebar__item">
+           🥘<span class="sidebar__label">{{menu.DisplayName}}</span>
+        </a>
+      </ng-container>
+      </nav>
+    </nav>
+
+  <!-- <section class="sidebar__spaces">
+    <h3 class="sidebar__subtitle">Spaces</h3>
+    <div class="sidebar__space-item">🥘 AI</div>
+    <div class="sidebar__space-item">📊 Projects</div>
+    <div class="sidebar__space-item">📈 LMS</div>
+    <div class="sidebar__space-item">🥘 DSA and Algorithm</div>
+  </section>
+
+  <div class="sidebar__trash">🗑 Trash</div> -->
+</aside>
