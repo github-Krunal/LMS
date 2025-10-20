@@ -1,0 +1,76 @@
+.course-card {
+  width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.card-image {
+  position: relative;
+  height: 160px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #21c55d;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.course-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #333;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #f5a623;
+  font-size: 14px;
+}
+
+.rating-score {
+  color: #888;
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  gap: 8px;
+}
+
+.author img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.author span {
+  font-size: 13px;
+  color: #555;
+}
