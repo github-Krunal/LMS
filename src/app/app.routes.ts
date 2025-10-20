@@ -4,6 +4,7 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { LoginComponent } from './components/authentication/login/login.component';
 import { RegistrationComponent } from './components/authentication/registration/registration.component';
 import { authGuard } from './guard/auth.guard';
+import { InxDashboardComponent } from './components/instructor/inx-dashboard/inx-dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -20,6 +21,16 @@ export const routes: Routes = [
   {
     path: 'instructor',
     component: InstructorComponent,
+    children:[
+      {
+        path:'',
+        component:InxDashboardComponent
+      },
+      {
+        path:'dashboard',
+        component:InxDashboardComponent
+      }
+    ]
   },
   {
     path:"repository",

@@ -14,10 +14,10 @@ export class InxMenuLayoutComponent {
   protected inxMenu=[
     {
       DisplayName:'Dashboard',
-      Route:'/'
+      Route:'dashboard'
     },{
       DisplayName:'Course',
-      Route:'/course'
+      Route:'course'
     }
   ]
 }
