@@ -41,12 +41,27 @@ export class FrameworkFormComponent {
   }
   private formInitalization(){
     this.initializeFrameworkForm();
-    this.getFieldDefination();
+    this.isBusinessObjectPresent();
   }
   private getFieldDefination(): void {
     if (this.businessObject?.fieldDefination) {
       this.fieldDefination = this.businessObject?.fieldDefination
     }
+  }
+
+  private isBusinessObjectPresent(){
+    if(this.businessObject){
+      this.getFieldDefination();
+    }else{
+      this.getBusinessObject();
+    }
+
+  }
+  private getBusinessObject() {
+    this.apiService.getSingleRepository(this.repositoryID).subscribe((objectDefination: IRepositoryDefination) => {
+      this.businessObject = objectDefination;
+      this.getFieldDefination();
+    })
   }
 
   private initializeFrameworkForm(): void {

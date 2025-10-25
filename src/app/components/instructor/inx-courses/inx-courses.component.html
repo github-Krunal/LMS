@@ -1,5 +1,5 @@
 <div class="align-right">
-  <button mat-raised-button>+ Course</button>
+  <button mat-raised-button (click)="onCourseClick()">+ Course</button>
 </div>
 
 
@@ -23,3 +23,8 @@
     </div>
   </div>
 </div>
+
+<gb-right-panel [isOpenSideNav]="isOpenSideNav" *ngIf="isOpenSideNav">
+  <framework-form (closeFormEmitter)="closeSidePanel()" [repositoryID]="repositoryID">
+  </framework-form>
+</gb-right-panel>
